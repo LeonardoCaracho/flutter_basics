@@ -1,9 +1,15 @@
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/calculator_brain.dart';
+import 'package:bmi_calculator/components/button_bottom.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-import 'icon_content.dart';
+
+import '../constants.dart';
+
 
 enum Gender { male, female }
 
@@ -128,19 +134,19 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           RoundIconButton(
-                            icon: FontAwesomeIcons.plus,
+                            icon: FontAwesomeIcons.minus,
                             onPress: () {
                               setState(() {
-                                weight++;
+                                weight--;
                               });
                             }
                           ),
                           SizedBox(width: 10),
                           RoundIconButton(
-                            icon: FontAwesomeIcons.minus,
+                            icon: FontAwesomeIcons.plus,
                             onPress: () {
                               setState(() {
-                                weight--;
+                                weight++;
                               });
                             }
                           ),
@@ -168,19 +174,19 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           RoundIconButton(
-                            icon: FontAwesomeIcons.plus,
+                            icon: FontAwesomeIcons.minus,
                             onPress: () {
                               setState(() {
-                                age++;
+                                age--;
                               });
                             }
                           ),
                           SizedBox(width: 10),
                           RoundIconButton(
-                            icon: FontAwesomeIcons.minus,
+                            icon: FontAwesomeIcons.plus,
                             onPress: () {
                               setState(() {
-                                age--;
+                                age++;
                               });
                             }
                           ),
@@ -192,11 +198,17 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           )),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight
+          ButtonBottom(
+            text: 'CALCULATE',
+            onClick: () {
+              CalculatorBrain calc = new CalculatorBrain(height: height, weight: weight);
+              
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(
+                bmiResult: calc.calculateBmi(),
+                resultText: calc.getResult(),
+                interpretation: calc.getInterpretation(),
+              )));
+            },
           )
         ],
       ),
@@ -204,26 +216,7 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPress});
 
-  final IconData icon;
-  final Function onPress;
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      constraints: BoxConstraints.tightFor(
-        height: 56.0,
-        width: 56.0
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4c4f5e),
-      elevation: 6.0,
-      child: Icon(icon),
-      onPressed: onPress,
-    );
-  }
-}
 
 
 
