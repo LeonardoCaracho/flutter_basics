@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "761774998577",
+    "firebase_url": "https://flash-chat-eadfd.firebaseio.com",
+    "project_id": "flash-chat-eadfd",
+    "storage_bucket": "flash-chat-eadfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761774998577:android:2b4fa098d549183ed7c110",
+        "android_client_info": {
+          "package_name": "co.leocaracho.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761774998577-v7av43phjr7kss98b5tc2bjnodqn2814.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb5_b0tGQ2FUZ7pYyFtIH991uPIbyoB_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761774998577-v7av43phjr7kss98b5tc2bjnodqn2814.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
